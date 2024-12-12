@@ -1,0 +1,133 @@
+1. Image Loading and Display
+
+Question:
+Write a program to load and display an image
+
+import cv2
+
+# Load the image
+image = cv2.imread('image.jpg')
+
+# Display the image
+cv2.imshow('Loaded Image', image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+2. Convert an Image to Grayscale
+
+Question:
+Write a program to convert a color image to grayscale.
+import cv2
+
+# Load the color image
+image = cv2.imread('image.jpg')
+
+# Convert to grayscale
+gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+# Save and display the grayscale image
+cv2.imshow('Grayscale Image', gray_image)
+cv2.imwrite('gray_image.jpg', gray_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+[12/11, 10:24 AM] +91 94758 84368: 3. Image Resizing
+
+Question:
+Write a program to resize an image to half its original dimensions.
+import cv2
+
+# Load the image
+image = cv2.imread('image.jpg')
+
+# Resize the image
+resized_image = cv2.resize(image, (0, 0), fx=0.5, fy=0.5)
+
+# Display the resized image
+cv2.imshow('Resized Image', resized_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+[12/11, 10:25 AM] +91 94758 84368: 4. Image Rotation
+
+Question:
+Write a program to rotate an image by 90 degrees clockwise.
+import cv2
+
+# Load the image
+image = cv2.imread('image.jpg')
+
+# Rotate the image
+rotated_image = cv2.rotate(image, cv2.ROTATE_90_CLOCKWISE)
+
+# Display the rotated image
+cv2.imshow('Rotated Image', rotated_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+Image Histogram and Thresholding
+
+Assignment:
+
+Plot the histogram of an image.
+
+Perform global thresholding.
+
+Perform adaptive thresholding.
+
+import cv2
+import matplotlib.pyplot as plt
+
+# Load an image
+image = cv2.imread('example.jpg', cv2.IMREAD_GRAYSCALE)
+
+# Plot histogram
+plt.hist(image.ravel(), 256, [0, 256])
+plt.title('Image Histogram')
+plt.xlabel('Pixel Intensity')
+plt.ylabel('Frequency')
+plt.show()
+
+# Global Thresholding
+_, global_thresh = cv2.threshold(image, 127, 255, cv2.THRESH_BINARY)
+cv2.imshow('Global Thresholding', global_thresh)
+
+# Adaptive Thresholding
+adaptive_thresh = cv2.adaptiveThreshold(image, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
+                                        cv2.THRESH_BINARY, 11, 2)
+cv2.imshow('Adaptive Thresholding', adaptive_thresh)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+Image Filtering
+
+Assignment:
+
+Apply smoothing using a Gaussian filter.
+
+Apply sharpening using a kernel.
+
+Apply median filtering to remove noise
+
+import cv2
+import numpy as np
+
+# Load an image
+image = cv2.imread('example.jpg')
+
+# Gaussian Blur
+gaussian_blur = cv2.GaussianBlur(image, (5, 5), 0)
+cv2.imshow('Gaussian Blur', gaussian_blur)
+
+# Sharpening
+kernel = np.array([[0, -1, 0], 
+                   [-1, 5, -1], 
+                   [0, -1, 0]])
+sharpened = cv2.filter2D(image, -1, kernel)
+cv2.imshow('Sharpened Image', sharpened)
+
+# Median Filtering
+median_filtered = cv2.medianBlur(image, 5)
+cv2.imshow('Median Filtered', median_filtered)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
